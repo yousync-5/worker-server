@@ -8,3 +8,8 @@ __pycache__/
 # IDE 설정 무시
 .vscode/
 .idea/
+
+
+
+client_secret.json
+tokens.json

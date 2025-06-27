@@ -31,9 +31,10 @@ async def process_video(request: VideoRequest):
         # 2. 지정 구간 영상 자르기
         cut_path = cut_video(video_path, request.start_time, request.end_time)
         # 3. 유저 음성 + 유튜브 영상 음성 합치기
-        merged_path = merge_audio(cut_path, request.audio_path)
+        # merged_path = merge_audio(cut_path, request.audio_path)
         # 4. 쇼츠용 세로 영상 변환
-        final_path = convert_to_shorts_format(merged_path)
+        # final_path = convert_to_shorts_format(merged_path)
+        final_path = convert_to_shorts_format(cut_path)
 
     except Exception as e:
         return {"error": str(e)}
@@ -45,7 +46,7 @@ async def process_video(request: VideoRequest):
         "message": "쇼츠용 영상 생성 완료",
         "video_path": video_path,
         "cut_video_path": cut_path,
-        "final_video_path": merged_path,
+        # "final_video_path": merged_path,
         "shorts_ready_video": final_path,
         "duration_seconds": duration
     }
